@@ -57,10 +57,13 @@ public final class TestSuite {
          * not yet the class loader for the factories to be tested.
          */
         return new Class<?>[] {
-            Test2201.class, Test2202.class, Test2203.class, Test2204.class, Test2205.class, Test2206.class,
-            Test2207.class, Test2208.class, Test2209.class, Test2210.class, Test2211.class, Test3201.class,
-            Test3202.class, Test3203.class, Test3204.class, Test3205.class, Test3206.class, Test3207.class,
-            Test3208.class, Test3209.class, Test3210.class, Test3211.class, Test3212.class
+                Test2201.class, Test2202.class, Test2203.class, Test2204.class, Test2205.class, Test2206.class,
+                Test2207.class, Test2208.class, Test2209.class, Test2210.class, Test2211.class, Test3201.class,
+                Test3202.class, Test3203.class, Test3204.class, Test3205.class, Test3206.class, Test3207.class,
+                Test3208.class, Test3209.class, Test3210.class, Test3211.class, Test3212.class, Test51011.class,
+                Test51012.class, Test51013.class, Test51014.class, Test51051.class, Test51052.class, Test5106.class,
+                Test5107.class, Test5108.class, Test5109.class, Test5110.class, Test51111.class, Test51112.class,
+                Test5112.class, Test5113.class
         };
     }
 }

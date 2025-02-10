@@ -544,6 +544,18 @@ public abstract class TestMethodGenerator {
     }
 
     /**
+     * Prints the javadoc {@code throws FactoryException} followed by the given explanatory text.
+     *
+     * @param  exception  map containing the exceptions and the texts saying when the exceptions are thrown.
+     */
+    final void printJavadocThrows(final Map<String, String> exception) {
+        indent(1); out.append(" *\n");
+        exception.forEach((e, m) -> {
+            indent(1); out.append(" * @throws ").append(e).append(" ").append(m).append('\n');
+        });
+    }
+
+    /**
      * Prints a "see" annotation if the given {@code method} is non-null.
      *
      * @param classe the number class, or 0 for the current class.
@@ -580,6 +592,37 @@ public abstract class TestMethodGenerator {
             printJavaIdentifier(name);
         }
         out.append("() throws FactoryException {\n");
+        final StringBuilder buffer = new StringBuilder(name.length());
+        for (int c, i=0; i<name.length(); i += Character.charCount(c)) {
+            c = name.codePointAt(i);
+            if (Character.isLetterOrDigit(c) || !Character.isSpaceChar(c)) {
+                buffer.appendCodePoint(Character.toLowerCase(c));
+            }
+        }
+        methodSortKey = buffer.toString();
+    }
+
+    /**
+     * Closes the javadoc comment block, then prints the test method signature.
+     * The signature includes the {@code throws FactoryException} declaration.
+     *
+     * @param point      the point name to be tested.
+     * @param name       the name to use for generating a method name. Used for sorting.
+     * @param exceptions the list of exceptions' names to be thrown by the method, or null for using {@link org.opengis.util.FactoryException}.
+     */
+    final void printTestMethodSignature(final String point, final String name, final List<String> exceptions) {
+        indent(1); out.append(" */\n");
+        indent(1); out.append("@Test\n");
+        indent(1); out.append("@DisplayName(\"").append(replaceAsciiPrimeByUnicode(name)).append("\")\n");
+        indent(1); out.append("public void ");
+
+        out.append(point.replace("-", "_"));
+
+        if (exceptions != null && !exceptions.isEmpty()) {
+            out.append("() throws ").append(String.join(",", exceptions)).append(" {\n");
+        } else {
+            out.append("() throws FactoryException {\n");
+        }
         final StringBuilder buffer = new StringBuilder(name.length());
         for (int c, i=0; i<name.length(); i += Character.charCount(c)) {
             c = name.codePointAt(i);
