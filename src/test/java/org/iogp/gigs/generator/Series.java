@@ -46,7 +46,8 @@ enum Series {
     /**
      * GIGS 5100 Conversion test data.
      */
-    CONVERSION("GIGS 5100 Conversion test data");
+    CONVERSION("GIGS 5100 Conversion test data"),
+    TRANSFORMATION("GIGS 5200 Coordinate transformation test data");
 
     /**
      * The directory where the series is located.

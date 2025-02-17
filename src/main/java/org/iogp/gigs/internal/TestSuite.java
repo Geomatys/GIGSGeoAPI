@@ -63,7 +63,8 @@ public final class TestSuite {
                 Test3208.class, Test3209.class, Test3210.class, Test3211.class, Test3212.class, Test51011.class,
                 Test51012.class, Test51013.class, Test51014.class, Test51051.class, Test51052.class, Test5106.class,
                 Test5107.class, Test5108.class, Test5109.class, Test5110.class, Test51111.class, Test51112.class,
-                Test5112.class, Test5113.class
+                Test5112.class, Test5113.class, Test5201.class, Test5201.class, Test52031.class, Test52032.class,
+                Test52041.class, Test52042.class, Test52051.class, Test52052.class, Test52061.class, Test52071.class
         };
     }
 }
